@@ -11,32 +11,39 @@ import Foundation
 import UIKit
 import ObjectiveC
 
-public class ClosureWrapper : NSObject
-{
-	
-	static let selector = Selector("invoke")
-	let callback : Void -> Void
-	init(callback : Void -> Void) {
-		self.callback = callback
-	}
-	
-	public func invoke()
-	{
-		callback()
-	}
-	
-}
-
-var AssociatedObjectHandle: UInt8 = 0
+var SwifterCocoaUIControlClosureDictKey = 0
+typealias ClosureDict = [UInt : Set<ClosureWrapper>]
 
 extension UIControl
 {
+	
 	public func addCallBack(callback: Void -> Void, forControlEvents events: UIControlEvents)
 	{
+		
+		var closureDict = objc_getAssociatedObject(self, &SwifterCocoaUIControlClosureDictKey) as? ClosureDict ?? ClosureDict()
+		
+		var closures = closureDict[events.rawValue] ?? Set<ClosureWrapper>()
+		
 		let wrapper = ClosureWrapper(callback:callback)
-		addTarget(wrapper, action:"invoke", forControlEvents: events)
-		// as @newacct said in comment, we need to retain wrapper object
-		// this only support 1 target, you can use array to support multiple target objects
-		objc_setAssociatedObject(self, &AssociatedObjectHandle, wrapper, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+		addTarget(wrapper, action:ClosureWrapper.selector, forControlEvents: events)
+		closures.insert(wrapper)
+		
+		closureDict[events.rawValue] = closures
+		
+		objc_setAssociatedObject(self, &SwifterCocoaUIControlClosureDictKey, closureDict, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+		
 	}
+	
+	public func removeAllCallBacksForControlEvents(events: UIControlEvents) {
+		var closureDict = objc_getAssociatedObject(self, &SwifterCocoaUIControlClosureDictKey) as? ClosureDict ?? ClosureDict()
+		let closures = closureDict[events.rawValue] ?? Set<ClosureWrapper>()
+		for closure in closures {
+			removeTarget(closure, action: ClosureWrapper.selector, forControlEvents: events);
+		}
+		closureDict[events.rawValue] = nil
+		objc_setAssociatedObject(self, &SwifterCocoaUIControlClosureDictKey, closureDict, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+		
+		
+	}
+	
 }

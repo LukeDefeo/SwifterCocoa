@@ -32,15 +32,14 @@ extension NSTimer
 		objc_setAssociatedObject(self, &SwifterCocoaNSTimerAssociatedObjectInit, closureWrapper, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 	}
 
-	//This hangs for some reason :/
+//This hangs for some reason :/
 //	public convenience init(interval: NSTimeInterval,closure: () -> (), repeats: Bool = true, userInfo: AnyObject? = nil) {
 //		let closureWrapper = ClosureWrapper(callback: closure)
 //		self.init(timeInterval:interval, target:closureWrapper, selector: ClosureWrapper.selector, userInfo: userInfo, repeats: repeats)
-////		self.init(timeInterval: interval, target: closureWrapper, selector: ClosureWrapper.selector, userInfo: userInfo, repeats: repeats)
+//		self.init(timeInterval: interval, target: closureWrapper, selector: ClosureWrapper.selector, userInfo: userInfo, repeats: repeats)
 //		
 //		objc_setAssociatedObject(self, &SwifterCocoaNSTimerAssociatedObject3, closureWrapper, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 //	}
-	
 	
 
 }

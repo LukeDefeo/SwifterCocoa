@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		932C94561BB5BC4500A14C16 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C94551BB5BC4500A14C16 /* Base.swift */; settings = {ASSET_TAGS = (); }; };
 		9374044B1BB3645D00723B9B /* SwifterCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = 9374044A1BB3645D00723B9B /* SwifterCocoa.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		937404541BB3647D00723B9B /* UIControl+SwifterCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937404521BB3647D00723B9B /* UIControl+SwifterCocoa.swift */; settings = {ASSET_TAGS = (); }; };
 		937404551BB3647D00723B9B /* NSTimer+SwifterCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937404531BB3647D00723B9B /* NSTimer+SwifterCocoa.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		932C94551BB5BC4500A14C16 /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		937404471BB3645D00723B9B /* SwifterCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwifterCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9374044A1BB3645D00723B9B /* SwifterCocoa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SwifterCocoa.h; path = SwifterCocoa/SwifterCocoa.h; sourceTree = "<group>"; };
 		9374044C1BB3645D00723B9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = SwifterCocoa/Info.plist; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				937404521BB3647D00723B9B /* UIControl+SwifterCocoa.swift */,
 				937404531BB3647D00723B9B /* NSTimer+SwifterCocoa.swift */,
+				932C94551BB5BC4500A14C16 /* Base.swift */,
 			);
 			path = SwifterCocoa;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				932C94561BB5BC4500A14C16 /* Base.swift in Sources */,
 				937404541BB3647D00723B9B /* UIControl+SwifterCocoa.swift in Sources */,
 				937404551BB3647D00723B9B /* NSTimer+SwifterCocoa.swift in Sources */,
 			);
@@ -296,6 +300,7 @@
 				937404511BB3645D00723B9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
